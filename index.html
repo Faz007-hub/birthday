@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A magical birthday surprise for Sir Sufyan — a hidden interactive celebration from Karishma, Maaz, and Zaara.">
+  <meta name="theme-color" content="#4b1d8f">
+  <title>A Magical Birthday Surprise ✨</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to surprise</a>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="gradient-orb orb-a"></div>
+    <div class="gradient-orb orb-b"></div>
+    <div class="gradient-orb orb-c"></div>
+    <div class="sparkle-field" id="sparkle-field"></div>
+    <div class="balloon-field" id="balloon-field"></div>
+  </div>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <button type="button" class="music-toggle" id="music-toggle" aria-pressed="false" aria-label="Toggle celebration music">
+    <span class="music-icon" aria-hidden="true">♪</span>
+    <span class="music-label">Music Off</span>
+  </button>
+
+  <main id="main">
+    <!-- STAGE ONE -->
+    <section class="stage is-active" id="stage-one" aria-labelledby="stage-one-title">
+      <div class="stage-inner">
+        <div class="gift-wrap" id="gift-wrap" aria-hidden="true">
+          <div class="gift-box" id="gift-box">
+            <div class="gift-lid">
+              <span class="gift-bow"></span>
+            </div>
+            <div class="gift-body">
+              <span class="gift-ribbon-v"></span>
+              <span class="gift-ribbon-h"></span>
+            </div>
+            <div class="gift-glow"></div>
+          </div>
+        </div>
+
+        <p class="whisper fade-in">Psst... Someone Special Is Here 👀</p>
+        <h1 id="stage-one-title" class="mystery-title fade-in delay-1">We have a little surprise for someone amazing...</h1>
+        <p class="lead fade-in delay-2">Someone whose special day deserves something extraordinary.</p>
+
+        <button type="button" class="glow-btn fade-in delay-3" id="unlock-btn">
+          🎁 Unlock Your Birthday Surprise
+        </button>
+      </div>
+    </section>
+
+    <!-- STAGE TWO -->
+    <section class="stage" id="stage-two" aria-labelledby="stage-two-title" hidden>
+      <div class="stage-inner">
+        <p class="eyebrow">Before We Reveal the Surprise...</p>
+        <h2 id="stage-two-title" class="section-title">Can You Guess Who This Special Day Is For? 🤔</h2>
+
+        <div class="guess-grid" id="guess-grid">
+          <button type="button" class="guess-card" data-guess="awesome">
+            <span class="guess-emoji">😎</span>
+            <span>Someone Awesome</span>
+          </button>
+          <button type="button" class="guess-card" data-guess="legend">
+            <span class="guess-emoji">🌟</span>
+            <span>A Legendary Person</span>
+          </button>
+          <button type="button" class="guess-card" data-guess="star">
+            <span class="guess-emoji">🎂</span>
+            <span>Our Birthday Star</span>
+          </button>
+        </div>
+
+        <p class="guess-reply" id="guess-reply" hidden>Haha! Good guess... but the surprise is getting closer! 👀</p>
+
+        <p class="continue-hint" id="continue-hint">Pick a card to continue — every answer is a little bit right.</p>
+
+        <div class="mystery-card" id="mystery-card" hidden>
+          <div class="mystery-card-inner" id="mystery-inner">
+            <div class="mystery-face mystery-front">
+              <p class="mystery-kicker">Your next mission awaits...</p>
+              <button type="button" class="glow-btn" id="reveal-btn">
+                ✨ Reveal the Birthday Star
+              </button>
+            </div>
+            <div class="mystery-face mystery-back" aria-hidden="true">
+              <p>The stars are aligning...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE THREE -->
+    <section class="stage" id="stage-three" aria-labelledby="stage-three-title" hidden>
+      <div class="stage-inner reveal-inner">
+        <div class="photo-frame" id="photo-frame">
+          <img
+            src="assets/sir-sufyan.jpg"
+            alt="Portrait of Sir Sufyan smiling in a checkered suit"
+            width="480"
+            height="640"
+            id="hero-photo"
+          >
+          <div class="photo-fallback" id="photo-fallback" hidden>
+            <span>Sir Sufyan</span>
+            <small>Add the photo at assets/sir-sufyan.jpg</small>
+          </div>
+        </div>
+
+        <h2 id="stage-three-title" class="hero-title">🎉 HAPPY BIRTHDAY, SIR SUFYAN! 🎉</h2>
+        <p class="hero-sub">Today is all about celebrating an amazing person!</p>
+
+        <article class="glass-card message-card">
+          <p>Wishing you a day filled with happiness, laughter, countless beautiful moments, and all the success your heart desires. May this new chapter of your life bring you exciting opportunities, unforgettable memories, good health, and endless reasons to smile.</p>
+          <p>Thank you for being someone worth celebrating. Today, the spotlight is yours, the cake is waiting, and the celebrations are just getting started!</p>
+          <p>May your year ahead be as wonderful and extraordinary as you are. Keep shining, keep inspiring, and keep making every moment count.</p>
+          <p class="message-close">Have an absolutely fantastic birthday, Sir Sufyan! 🥳🎂🎈</p>
+        </article>
+
+        <p class="from-label">WITH BEST WISHES FROM ❤️</p>
+        <ul class="name-badges">
+          <li>✨ Karishma</li>
+          <li>✨ Maaz</li>
+          <li>✨ Zaara</li>
+        </ul>
+        <p class="made-with">Made with love, laughter, and a little bit of birthday magic.</p>
+
+        <button type="button" class="glow-btn extra-btn" id="extra-btn">
+          🎁 Wait... There's One More Surprise!
+        </button>
+
+        <div class="extra-surprise" id="extra-surprise" hidden>
+          <section class="glass-card wish-panel" aria-labelledby="wish-title">
+            <h3 id="wish-title">Make a Wish</h3>
+            <p>Close your eyes, make a wish, and get ready for an amazing year ahead! 🌠</p>
+
+            <div class="cake" id="cake" aria-hidden="true">
+              <svg viewBox="0 0 180 160" role="img" aria-label="Birthday cake with a glowing candle">
+                <ellipse cx="90" cy="138" rx="70" ry="10" fill="rgba(75, 29, 143, 0.18)"/>
+                <path d="M28 108c0 16 28 28 62 28s62-12 62-28v-18H28v18z" fill="#f7c6d8"/>
+                <path d="M28 90c0 14 28 24 62 24s62-10 62-24v-16H28v16z" fill="#f4d7a8"/>
+                <path d="M38 74c8-10 22-16 52-16s44 6 52 16v16H38V74z" fill="#fff7fb"/>
+                <path d="M38 74c8 8 22 12 52 12s44-4 52-12" fill="none" stroke="#e8b4c8" stroke-width="3"/>
+                <rect x="86" y="38" width="8" height="36" rx="3" fill="#ffe08a"/>
+                <ellipse cx="90" cy="38" rx="5" ry="3" fill="#ffd24a"/>
+                <g id="flame" class="flame">
+                  <ellipse cx="90" cy="24" rx="7" ry="14" fill="#ffb347"/>
+                  <ellipse cx="90" cy="22" rx="4" ry="9" fill="#fff3b0"/>
+                </g>
+              </svg>
+            </div>
+
+            <button type="button" class="glow-btn" id="wish-btn">Make a Wish ✨</button>
+            <p class="wish-result" id="wish-result" hidden>May all your wonderful wishes come true! 💖</p>
+          </section>
+
+          <section class="party-panel">
+            <button type="button" class="glow-btn party-btn" id="party-btn">🎊 LET THE PARTY BEGIN!</button>
+            <p class="party-banner" id="party-banner" hidden>IT'S PARTY TIME, SIR SUFYAN! 🥳</p>
+          </section>
+
+          <article class="glass-card final-card">
+            <h3>A Final Personal Message</h3>
+            <p>Some days are special, but some people make the day special. Today, we're celebrating you! Here's to another year of happiness, achievements, laughter, and unforgettable adventures. Happy Birthday once again, Sir Sufyan! 🎂💫</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="party-flash" id="party-flash" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
