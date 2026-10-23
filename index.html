@@ -1,180 +1,720 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A magical birthday surprise for Sir Sufyan — a hidden interactive celebration from Karishma, Maaz, and Zaara.">
-  <meta name="theme-color" content="#4b1d8f">
-  <title>A Magical Birthday Surprise ✨</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎉 Happy Birthday, Sir Sufyan! | A Magical Celebration</title>
+  <meta name="description" content="A magical, interactive birthday surprise website celebrating our beloved teacher and mentor, Sir Sufyan. Created with love by Karishma, Maaz, and Zaara." />
+  <meta name="keywords" content="Happy Birthday Sir Sufyan, Birthday Surprise, Karishma Maaz Zaara, Mentor Celebration" />
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="🎉 Happy Birthday, Sir Sufyan! | A Magical Birthday Surprise" />
+  <meta property="og:description" content="Click through a magical birthday adventure created with love by Karishma, Maaz, and Zaara for Sir Sufyan!" />
+  <meta property="og:image" content="sir-sufyan.jpeg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to surprise</a>
+  <!-- Canvas for celebration confetti & sparkle particles -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
 
-  <div class="ambient" aria-hidden="true">
-    <div class="gradient-orb orb-a"></div>
-    <div class="gradient-orb orb-b"></div>
-    <div class="gradient-orb orb-c"></div>
-    <div class="sparkle-field" id="sparkle-field"></div>
-    <div class="balloon-field" id="balloon-field"></div>
+  <!-- Ambient decorative floating balloons -->
+  <div class="ambient-balloons" aria-hidden="true">
+    <div class="balloon balloon-pink float-slow-1">🎈</div>
+    <div class="balloon balloon-blue float-slow-2">🎈</div>
+    <div class="balloon balloon-yellow float-slow-3">🎈</div>
+    <div class="balloon balloon-purple float-slow-4">🎈</div>
+    <div class="balloon balloon-orange float-slow-5">🎈</div>
+    <div class="balloon balloon-mint float-slow-6">🎈</div>
   </div>
 
-  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <!-- Ambient floating sparkles & ribbons -->
+  <div class="ambient-sparkles" aria-hidden="true">
+    <span class="sparkle-star s1">✨</span>
+    <span class="sparkle-star s2">⭐</span>
+    <span class="sparkle-star s3">🌟</span>
+    <span class="sparkle-star s4">✨</span>
+    <span class="sparkle-star s5">⭐</span>
+    <span class="sparkle-star s6">💖</span>
+  </div>
 
-  <button type="button" class="music-toggle" id="music-toggle" aria-pressed="false" aria-label="Toggle celebration music">
-    <span class="music-icon" aria-hidden="true">♪</span>
-    <span class="music-label">Music Off</span>
-  </button>
+  <!-- Top Floating Navigation / Audio Bar -->
+  <header class="top-nav-bar" role="banner">
+    <div class="nav-brand">
+      <span class="brand-badge">🎂 SPECIAL BIRTHDAY EDITION</span>
+      <span class="brand-sub">For Sir Sufyan</span>
+    </div>
 
-  <main id="main">
-    <!-- STAGE ONE -->
-    <section class="stage is-active" id="stage-one" aria-labelledby="stage-one-title">
-      <div class="stage-inner">
-        <div class="gift-wrap" id="gift-wrap" aria-hidden="true">
-          <div class="gift-box" id="gift-box">
+    <!-- Adventure Progress Steps -->
+    <nav class="stage-stepper" aria-label="Surprise progress steps">
+      <button class="step-btn active" data-step="1" title="Stage 1: The Mystery Invitation" id="nav-step-1">
+        <span class="step-icon">🎁</span>
+        <span class="step-label">Invitation</span>
+      </button>
+      <div class="step-line line-1-2"></div>
+      <button class="step-btn" data-step="2" title="Stage 2: Balloon Challenge" id="nav-step-2">
+        <span class="step-icon">🎈</span>
+        <span class="step-label">Appreciation</span>
+      </button>
+      <div class="step-line line-2-3"></div>
+      <button class="step-btn" data-step="3" title="Stage 3: The Grand Reveal" id="nav-step-3">
+        <span class="step-icon">🎂</span>
+        <span class="step-label">Grand Reveal</span>
+      </button>
+      <div class="step-line line-3-4"></div>
+      <button class="step-btn" data-step="4" title="Stage 4: Heartfelt Letters" id="nav-step-4">
+        <span class="step-icon">💌</span>
+        <span class="step-label">Dedication</span>
+      </button>
+      <div class="step-line line-4-5"></div>
+      <button class="step-btn" data-step="5" title="Stage 5: Celebration Arcade" id="nav-step-5">
+        <span class="step-icon">🎊</span>
+        <span class="step-label">Fun Zone</span>
+      </button>
+    </nav>
+
+    <!-- Music & Audio Controls -->
+    <div class="nav-controls">
+      <button id="music-toggle-btn" class="ctrl-btn music-btn" aria-label="Toggle Birthday Melody Music" title="Play / Pause Birthday Music">
+        <span class="music-icon" id="music-icon">🎵</span>
+        <span class="music-text" id="music-text">Play Melody</span>
+        <div class="sound-wave" id="sound-wave" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+      <button id="sound-fx-toggle" class="ctrl-btn fx-btn" aria-label="Toggle Sound Effects" title="Sound Effects On/Off">
+        <span id="fx-icon">🔔</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Multi-Stage Adventure Container -->
+  <main id="adventure-container">
+
+    <!-- ==============================================
+         STAGE 1: THE MYSTERIOUS BIRTHDAY INVITATION 🎁
+         ============================================== -->
+    <section id="stage-1" class="stage-section active" aria-labelledby="stage-1-heading">
+      <div class="stage-wrapper stage-1-card">
+        
+        <div class="mystery-pill-badge">
+          <span class="badge-dot"></span>
+          <span>SECRET INVITATION • PRIORITY DELIVERY</span>
+          <span class="badge-dot"></span>
+        </div>
+
+        <h1 id="stage-1-heading" class="stage-title">
+          A Magical Surprise Is Waiting For Someone Truly Extraordinary! ✨
+        </h1>
+
+        <p class="stage-subtitle">
+          Someone who illuminates our minds, inspires our ambition, and fills every classroom with wisdom, warmth, and laughter.
+        </p>
+
+        <!-- 3D Gift Box Interactive Experience -->
+        <div class="gift-box-stage" id="gift-box-trigger" role="button" tabindex="0" aria-label="Click to open magical surprise birthday gift box">
+          <div class="gift-glow-effect"></div>
+          
+          <div class="gift-box" id="mystery-gift">
+            <!-- Box Lid -->
             <div class="gift-lid">
-              <span class="gift-bow"></span>
+              <div class="gift-lid-ribbon"></div>
+              <div class="gift-bow">
+                <div class="bow-loop left"></div>
+                <div class="bow-loop right"></div>
+                <div class="bow-center"></div>
+                <div class="bow-tail left"></div>
+                <div class="bow-tail right"></div>
+              </div>
             </div>
+            <!-- Box Body -->
             <div class="gift-body">
-              <span class="gift-ribbon-v"></span>
-              <span class="gift-ribbon-h"></span>
+              <div class="gift-body-ribbon-v"></div>
+              <div class="gift-body-ribbon-h"></div>
+              <div class="gift-tag">
+                <span>For: Our Favorite Mentor 💖</span>
+              </div>
             </div>
-            <div class="gift-glow"></div>
+            <!-- Hidden Magic Spilling Out -->
+            <div class="gift-sparkles-burst" id="gift-burst" aria-hidden="true">
+              <span class="b-star">🌟</span>
+              <span class="b-star">🎉</span>
+              <span class="b-star">✨</span>
+              <span class="b-star">🎂</span>
+              <span class="b-star">🎈</span>
+            </div>
+          </div>
+
+          <div class="gift-prompt-wrap">
+            <span class="gift-click-indicator">
+              <span class="pointer-hand">👆</span>
+              <strong>Click the Magical Gift Box to Begin the Surprise!</strong>
+            </span>
+            <p class="gift-hint-text">Packed with boundless admiration by Karishma, Maaz, and Zaara</p>
           </div>
         </div>
 
-        <p class="whisper fade-in">Psst... Someone Special Is Here 👀</p>
-        <h1 id="stage-one-title" class="mystery-title fade-in delay-1">We have a little surprise for someone amazing...</h1>
-        <p class="lead fade-in delay-2">Someone whose special day deserves something extraordinary.</p>
-
-        <button type="button" class="glow-btn fade-in delay-3" id="unlock-btn">
-          🎁 Unlock Your Birthday Surprise
-        </button>
-      </div>
-    </section>
-
-    <!-- STAGE TWO -->
-    <section class="stage" id="stage-two" aria-labelledby="stage-two-title" hidden>
-      <div class="stage-inner">
-        <p class="eyebrow">Before We Reveal the Surprise...</p>
-        <h2 id="stage-two-title" class="section-title">Can You Guess Who This Special Day Is For? 🤔</h2>
-
-        <div class="guess-grid" id="guess-grid">
-          <button type="button" class="guess-card" data-guess="awesome">
-            <span class="guess-emoji">😎</span>
-            <span>Someone Awesome</span>
-          </button>
-          <button type="button" class="guess-card" data-guess="legend">
-            <span class="guess-emoji">🌟</span>
-            <span>A Legendary Person</span>
-          </button>
-          <button type="button" class="guess-card" data-guess="star">
-            <span class="guess-emoji">🎂</span>
-            <span>Our Birthday Star</span>
+        <!-- Stage 1 Fast-Forward Option -->
+        <div class="stage-actions">
+          <button id="start-adventure-btn" class="primary-btn pulse-glow">
+            <span>Open Mystery Delivery</span>
+            <span class="btn-arrow">➜</span>
           </button>
         </div>
 
-        <p class="guess-reply" id="guess-reply" hidden>Haha! Good guess... but the surprise is getting closer! 👀</p>
+      </div>
+    </section>
 
-        <p class="continue-hint" id="continue-hint">Pick a card to continue — every answer is a little bit right.</p>
+    <!-- ==============================================
+         STAGE 2: BALLOON POP CHALLENGE 🎈
+         ============================================== -->
+    <section id="stage-2" class="stage-section" aria-labelledby="stage-2-heading">
+      <div class="stage-wrapper stage-2-card">
+        
+        <div class="mystery-pill-badge warm">
+          <span>STAGE 2 • THE 3 PILLARS OF EXCELLENCE</span>
+        </div>
 
-        <div class="mystery-card" id="mystery-card" hidden>
-          <div class="mystery-card-inner" id="mystery-inner">
-            <div class="mystery-face mystery-front">
-              <p class="mystery-kicker">Your next mission awaits...</p>
-              <button type="button" class="glow-btn" id="reveal-btn">
-                ✨ Reveal the Birthday Star
+        <h2 id="stage-2-heading" class="stage-title">
+          Pop the 3 Balloons of Appreciation! 🎈
+        </h2>
+
+        <p class="stage-subtitle">
+          Before revealing the grand birthday star, click and pop each floating balloon to discover the three legendary qualities that define our mentor!
+        </p>
+
+        <!-- Progress Tracker -->
+        <div class="challenge-progress-bar-container">
+          <div class="progress-info">
+            <span id="balloon-progress-text">0 of 3 Balloons Popped</span>
+            <span id="balloon-progress-percent">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="balloon-progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- The 3 Interactive Balloons -->
+        <div class="balloons-grid">
+          
+          <!-- Balloon 1: Wisdom -->
+          <div class="interactive-balloon-card" id="balloon-card-1">
+            <div class="balloon-item balloon-pink" id="balloon-1" role="button" tabindex="0" aria-label="Pop Wisdom Balloon">
+              <div class="balloon-shine"></div>
+              <div class="balloon-label">Wisdom</div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+            <div class="balloon-revelation" id="revelation-1">
+              <div class="rev-icon">💡</div>
+              <h3>The Beacon of Wisdom</h3>
+              <p>You don't just teach subjects; you cultivate curiosity and guide us to think beyond boundaries with unmatched patience and clarity.</p>
+              <span class="rev-tag">#GuidingLight</span>
+            </div>
+          </div>
+
+          <!-- Balloon 2: Dedication -->
+          <div class="interactive-balloon-card" id="balloon-card-2">
+            <div class="balloon-item balloon-yellow" id="balloon-2" role="button" tabindex="0" aria-label="Pop Dedication Balloon">
+              <div class="balloon-shine"></div>
+              <div class="balloon-label">Dedication</div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+            <div class="balloon-revelation" id="revelation-2">
+              <div class="rev-icon">⚡</div>
+              <h3>Unwavering Passion</h3>
+              <p>Your relentless energy, dedication to every student, and infectious enthusiasm turn the toughest challenges into exciting achievements!</p>
+              <span class="rev-tag">#TrueInspiration</span>
+            </div>
+          </div>
+
+          <!-- Balloon 3: Kindness -->
+          <div class="interactive-balloon-card" id="balloon-card-3">
+            <div class="balloon-item balloon-blue" id="balloon-3" role="button" tabindex="0" aria-label="Pop Kindness Balloon">
+              <div class="balloon-shine"></div>
+              <div class="balloon-label">Kindness</div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+            <div class="balloon-revelation" id="revelation-3">
+              <div class="rev-icon">🌟</div>
+              <h3>A Heart of Gold</h3>
+              <p>Always approachable, supportive, and uplifting. You believe in us before we even believe in ourselves. A mentor in a million!</p>
+              <span class="rev-tag">#LegendaryMentor</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Unlock Button (Activated after all 3 popped) -->
+        <div class="stage-actions">
+          <button id="unlock-reveal-btn" class="primary-btn unlock-btn disabled" disabled>
+            <span class="btn-lock-icon">🔒</span>
+            <span class="btn-text">Pop All 3 Balloons to Unlock Reveal</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         STAGE 3: THE GRAND BIRTHDAY CELEBRATION 🎂👑
+         ============================================== -->
+    <section id="stage-3" class="stage-section" aria-labelledby="stage-3-heading">
+      <div class="stage-wrapper stage-3-card grand-reveal-card">
+        
+        <!-- Festive Confetti Top Banner -->
+        <div class="celebration-ribbon-banner">
+          <span class="ribbon-sparkle">✨</span>
+          <span>TODAY WE CELEBRATE OUR LEGEND</span>
+          <span class="ribbon-sparkle">✨</span>
+        </div>
+
+        <!-- Grand Title -->
+        <div class="grand-header">
+          <span class="cheer-badge animate-bounce">🎂 HAPPY BIRTHDAY! 🎂</span>
+          <h1 id="stage-3-heading" class="grand-person-title">
+            SIR SUFYAN
+          </h1>
+          <p class="grand-tagline">
+            The Master Mentor, Inspiration to All & Builder of Futures!
+          </p>
+        </div>
+
+        <!-- Centerpiece Layout: Photo Frame & Interactive Cake -->
+        <div class="reveal-centerpiece-grid">
+          
+          <!-- Grand Photo Showcase Frame -->
+          <div class="portrait-container">
+            <div class="royal-crown" aria-hidden="true">
+              <span class="crown-icon">👑</span>
+              <span class="crown-sparkles">✨</span>
+            </div>
+
+            <div class="portrait-frame glow-pulse">
+              <!-- Golden Corner Ornaments -->
+              <div class="frame-corner top-left"></div>
+              <div class="frame-corner top-right"></div>
+              <div class="frame-corner bottom-left"></div>
+              <div class="frame-corner bottom-right"></div>
+
+              <!-- Real Photograph of Sir Sufyan -->
+              <div class="portrait-image-wrapper">
+                <img 
+                  id="sir-sufyan-photo" 
+                  src="sir-sufyan.jpeg" 
+                  alt="Sir Sufyan - Celebrating his magical birthday" 
+                  class="portrait-img" 
+                  loading="eager"
+                  onerror="this.onerror=null; this.src='sir-sufyan.jpg';"
+                />
+                <div class="portrait-glass-overlay"></div>
+              </div>
+
+              <!-- Photo Ribbon Label -->
+              <div class="portrait-badge">
+                <span class="star-gold">⭐</span>
+                <span>The Man of the Day • Sir Sufyan</span>
+                <span class="star-gold">⭐</span>
+              </div>
+            </div>
+
+            <!-- Floating Accents around photo -->
+            <div class="photo-floating-badges" aria-hidden="true">
+              <span class="float-tag tag-left">🏆 Best Teacher</span>
+              <span class="float-tag tag-right">🌟 Infinite Respect</span>
+            </div>
+          </div>
+
+          <!-- Interactive Birthday Cake & Wish Ceremony -->
+          <div class="cake-ceremony-panel">
+            <div class="cake-panel-header">
+              <h3>Interactive Birthday Cake 🎂</h3>
+              <p>Make a heartfelt wish and tap the cake to blow out the candles!</p>
+            </div>
+
+            <!-- CSS Animated 3-Tier Birthday Cake -->
+            <div class="birthday-cake-container" id="birthday-cake" role="button" tabindex="0" aria-label="Tap to blow out birthday candles">
+              
+              <!-- Candles & Flames -->
+              <div class="candles-rack">
+                <div class="candle candle-1">
+                  <div class="flame" id="flame-1"></div>
+                  <div class="smoke" id="smoke-1"></div>
+                  <div class="wick"></div>
+                  <div class="candle-stick c-pink"></div>
+                </div>
+                <div class="candle candle-2">
+                  <div class="flame" id="flame-2"></div>
+                  <div class="smoke" id="smoke-2"></div>
+                  <div class="wick"></div>
+                  <div class="candle-stick c-yellow"></div>
+                </div>
+                <div class="candle candle-3">
+                  <div class="flame" id="flame-3"></div>
+                  <div class="smoke" id="smoke-3"></div>
+                  <div class="wick"></div>
+                  <div class="candle-stick c-blue"></div>
+                </div>
+              </div>
+
+              <!-- Tier 1 (Top) -->
+              <div class="cake-tier tier-top">
+                <div class="frosting-drippings"></div>
+                <div class="sprinkles-row">
+                  <span class="sprinkle sp1"></span>
+                  <span class="sprinkle sp2"></span>
+                  <span class="sprinkle sp3"></span>
+                  <span class="sprinkle sp4"></span>
+                </div>
+              </div>
+
+              <!-- Tier 2 (Middle) -->
+              <div class="cake-tier tier-mid">
+                <div class="mid-cream-line"></div>
+                <div class="cake-decorations">
+                  <span>🍓</span><span>✨</span><span>🍓</span>
+                </div>
+              </div>
+
+              <!-- Tier 3 (Base) -->
+              <div class="cake-tier tier-base">
+                <div class="base-pattern"></div>
+              </div>
+
+              <!-- Cake Plate -->
+              <div class="cake-plate"></div>
+            </div>
+
+            <!-- Cake Interaction Controls & Wish Feedback -->
+            <div class="cake-controls">
+              <button id="blow-candles-btn" class="cake-btn primary-glow">
+                <span>💨 Blow the Candles!</span>
+              </button>
+              <button id="relight-candles-btn" class="cake-btn secondary-btn hidden">
+                <span>🔥 Light Again</span>
               </button>
             </div>
-            <div class="mystery-face mystery-back" aria-hidden="true">
-              <p>The stars are aligning...</p>
+
+            <!-- Wish Reveal Box -->
+            <div class="wish-reveal-box" id="wish-reveal-box">
+              <span class="wish-stars">✨💫✨</span>
+              <p class="wish-text" id="wish-text-content">
+                "May this new year bless Sir Sufyan with boundless happiness, radiant health, unmatched triumphs, and endless joy! You are truly cherished!"
+              </p>
+              <span class="wish-signature">— Karishma, Maaz & Zaara</span>
             </div>
+
           </div>
+
         </div>
+
+        <!-- Stage Navigation Actions -->
+        <div class="stage-actions celebration-action-row">
+          <button id="burst-confetti-stage3" class="secondary-btn btn-shake">
+            <span>🎉 Pop More Confetti!</span>
+          </button>
+          <button id="go-to-stage-4-btn" class="primary-btn pulse-glow">
+            <span>Read Letters from Us 💌</span>
+            <span class="btn-arrow">➜</span>
+          </button>
+        </div>
+
       </div>
     </section>
 
-    <!-- STAGE THREE -->
-    <section class="stage" id="stage-three" aria-labelledby="stage-three-title" hidden>
-      <div class="stage-inner reveal-inner">
-        <div class="photo-frame" id="photo-frame">
-          <img
-            src="sir-sufyan.jpg"
-            alt="Portrait of Sir Sufyan smiling in a checkered suit"
-            width="480"
-            height="640"
-            id="hero-photo"
-          >
-          <div class="photo-fallback" id="photo-fallback" hidden>
-            <span>Sir Sufyan</span>
-            <small>Add the photo at assets/sir-sufyan.jpg</small>
-          </div>
+    <!-- ==============================================
+         STAGE 4: HEARTFELT LETTERS & DEDICATIONS 💌
+         ============================================== -->
+    <section id="stage-4" class="stage-section" aria-labelledby="stage-4-heading">
+      <div class="stage-wrapper stage-4-card">
+        
+        <div class="mystery-pill-badge pink">
+          <span>FROM THE BOTTOM OF OUR HEARTS 💖</span>
         </div>
 
-        <h2 id="stage-three-title" class="hero-title">🎉 HAPPY BIRTHDAY, SIR SUFYAN! 🎉</h2>
-        <p class="hero-sub">Today is all about celebrating an amazing person!</p>
+        <h2 id="stage-4-heading" class="stage-title">
+          Special Dedications for Sir Sufyan 💌
+        </h2>
 
-        <article class="glass-card message-card">
-          <p>Wishing you a day filled with happiness, laughter, countless beautiful moments, and all the success your heart desires. May this new chapter of your life bring you exciting opportunities, unforgettable memories, good health, and endless reasons to smile.</p>
-          <p>Thank you for being someone worth celebrating. Today, the spotlight is yours, the cake is waiting, and the celebrations are just getting started!</p>
-          <p>May your year ahead be as wonderful and extraordinary as you are. Keep shining, keep inspiring, and keep making every moment count.</p>
-          <p class="message-close">Have an absolutely fantastic birthday, Sir Sufyan! 🥳🎂🎈</p>
-        </article>
+        <p class="stage-subtitle">
+          Words can never capture the depth of our gratitude, but here are our personal birthday messages crafted with utmost love and respect.
+        </p>
 
-        <p class="from-label">WITH BEST WISHES FROM ❤️</p>
-        <ul class="name-badges">
-          <li>✨ Karishma</li>
-          <li>✨ Maaz</li>
-          <li>✨ Zaara</li>
-        </ul>
-        <p class="made-with">Made with love, laughter, and a little bit of birthday magic.</p>
-
-        <button type="button" class="glow-btn extra-btn" id="extra-btn">
-          🎁 Wait... There's One More Surprise!
-        </button>
-
-        <div class="extra-surprise" id="extra-surprise" hidden>
-          <section class="glass-card wish-panel" aria-labelledby="wish-title">
-            <h3 id="wish-title">Make a Wish</h3>
-            <p>Close your eyes, make a wish, and get ready for an amazing year ahead! 🌠</p>
-
-            <div class="cake" id="cake" aria-hidden="true">
-              <svg viewBox="0 0 180 160" role="img" aria-label="Birthday cake with a glowing candle">
-                <ellipse cx="90" cy="138" rx="70" ry="10" fill="rgba(75, 29, 143, 0.18)"/>
-                <path d="M28 108c0 16 28 28 62 28s62-12 62-28v-18H28v18z" fill="#f7c6d8"/>
-                <path d="M28 90c0 14 28 24 62 24s62-10 62-24v-16H28v16z" fill="#f4d7a8"/>
-                <path d="M38 74c8-10 22-16 52-16s44 6 52 16v16H38V74z" fill="#fff7fb"/>
-                <path d="M38 74c8 8 22 12 52 12s44-4 52-12" fill="none" stroke="#e8b4c8" stroke-width="3"/>
-                <rect x="86" y="38" width="8" height="36" rx="3" fill="#ffe08a"/>
-                <ellipse cx="90" cy="38" rx="5" ry="3" fill="#ffd24a"/>
-                <g id="flame" class="flame">
-                  <ellipse cx="90" cy="24" rx="7" ry="14" fill="#ffb347"/>
-                  <ellipse cx="90" cy="22" rx="4" ry="9" fill="#fff3b0"/>
-                </g>
-              </svg>
+        <!-- 3 Students Dedicated Letter Cards -->
+        <div class="letters-grid">
+          
+          <!-- Letter 1: Karishma -->
+          <article class="letter-card card-karishma">
+            <div class="card-glow-edge"></div>
+            <div class="letter-stamp">
+              <span class="stamp-icon">🌸</span>
+              <span class="stamp-from">Karishma</span>
+            </div>
+            
+            <div class="letter-header">
+              <div class="student-avatar avatar-karishma">K</div>
+              <div class="student-meta">
+                <h3 class="student-name">Karishma's Letter</h3>
+                <span class="student-role">Devoted Student</span>
+              </div>
             </div>
 
-            <button type="button" class="glow-btn" id="wish-btn">Make a Wish ✨</button>
-            <p class="wish-result" id="wish-result" hidden>May all your wonderful wishes come true! 💖</p>
-          </section>
+            <div class="letter-body">
+              <p class="salutation">Respected Sir Sufyan,</p>
+              <p>
+                To learn under your guidance is one of the greatest privileges of our academic journey. You have an extraordinary ability to make even the most intricate concepts feel intuitive and fascinating.
+              </p>
+              <p>
+                Thank you for your infinite patience, your reassuring smile during stressful days, and your belief in my abilities whenever self-doubt crept in. You don’t just teach lessons; you light up the future.
+              </p>
+              <p>
+                May this year reward you with supreme peace, boundless fulfillment, and endless prosperity. Have the happiest birthday, Sir!
+              </p>
+            </div>
 
-          <section class="party-panel">
-            <button type="button" class="glow-btn party-btn" id="party-btn">🎊 LET THE PARTY BEGIN!</button>
-            <p class="party-banner" id="party-banner" hidden>IT'S PARTY TIME, SIR SUFYAN! 🥳</p>
-          </section>
-
-          <article class="glass-card final-card">
-            <h3>A Final Personal Message</h3>
-            <p>Some days are special, but some people make the day special. Today, we're celebrating you! Here's to another year of happiness, achievements, laughter, and unforgettable adventures. Happy Birthday once again, Sir Sufyan! 🎂💫</p>
+            <div class="letter-footer">
+              <span class="sign-off">With deepest respect & prayers,</span>
+              <strong class="author-sign">Karishma 🌸</strong>
+            </div>
           </article>
+
+          <!-- Letter 2: Maaz -->
+          <article class="letter-card card-maaz">
+            <div class="card-glow-edge"></div>
+            <div class="letter-stamp">
+              <span class="stamp-icon">🚀</span>
+              <span class="stamp-from">Maaz</span>
+            </div>
+
+            <div class="letter-header">
+              <div class="student-avatar avatar-maaz">M</div>
+              <div class="student-meta">
+                <h3 class="student-name">Maaz's Letter</h3>
+                <span class="student-role">Devoted Student</span>
+              </div>
+            </div>
+
+            <div class="letter-body">
+              <p class="salutation">Dearest Sir Sufyan,</p>
+              <p>
+                A truly exceptional teacher is rare, invaluable, and impossible to forget. Your sharp intellect, incredible dedication, and charismatic way of teaching set a gold standard for what mentorship truly means.
+              </p>
+              <p>
+                You’ve always challenged us to aim higher, embrace problems with confidence, and never settle for mediocrity. Your mentorship has built our courage as much as our knowledge.
+              </p>
+              <p>
+                May this year bring you grand milestones, unstoppable success, and memories as rich and joyous as the impact you make on all of us. Happy Birthday, Sir!
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <span class="sign-off">With supreme admiration & gratitude,</span>
+              <strong class="author-sign">Maaz 🚀</strong>
+            </div>
+          </article>
+
+          <!-- Letter 3: Zaara -->
+          <article class="letter-card card-zaara">
+            <div class="card-glow-edge"></div>
+            <div class="letter-stamp">
+              <span class="stamp-icon">✨</span>
+              <span class="stamp-from">Zaara</span>
+            </div>
+
+            <div class="letter-header">
+              <div class="student-avatar avatar-zaara">Z</div>
+              <div class="student-meta">
+                <h3 class="student-name">Zaara's Letter</h3>
+                <span class="student-role">Devoted Student</span>
+              </div>
+            </div>
+
+            <div class="letter-body">
+              <p class="salutation">Dear Sir Sufyan,</p>
+              <p>
+                Wishing the most inspiring teacher the happiest and most magical birthday ever! Every interaction with you leaves us motivated, enlightened, and eager to conquer new horizons.
+              </p>
+              <p>
+                Thank you for your kindness, your boundless encouragement, and the warmth with which you listen to every single question. You have made learning an adventure rather than a chore.
+              </p>
+              <p>
+                May your life always be adorned with radiant smiles, vibrant health, and wonderful blessings from above. Thank you for being our superstar mentor!
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <span class="sign-off">With endless warmth & best wishes,</span>
+              <strong class="author-sign">Zaara ✨</strong>
+            </div>
+          </article>
+
         </div>
+
+        <!-- Joint Quote Banner -->
+        <div class="collective-tribute-banner">
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            “To the world, you may simply be a teacher; but to the three of us, you are a hero, a compass, and the greatest inspiration!”
+          </p>
+          <div class="quote-authors">
+            — Forever Grateful: <strong>Karishma</strong>, <strong>Maaz</strong> & <strong>Zaara</strong>
+          </div>
+        </div>
+
+        <!-- Stage Navigation Actions -->
+        <div class="stage-actions">
+          <button id="go-to-stage-3-back" class="secondary-btn">
+            <span>⬅ Back to Portrait & Cake</span>
+          </button>
+          <button id="go-to-stage-5-btn" class="primary-btn pulse-glow">
+            <span>Enter Birthday Fun Zone 🎊</span>
+            <span class="btn-arrow">➜</span>
+          </button>
+        </div>
+
       </div>
     </section>
+
+    <!-- ==============================================
+         STAGE 5: CELEBRATION ARCADE & FUN ZONE 🎊
+         ============================================== -->
+    <section id="stage-5" class="stage-section" aria-labelledby="stage-5-heading">
+      <div class="stage-wrapper stage-5-card">
+        
+        <div class="mystery-pill-badge gold">
+          <span>STAGE 5 • CELEBRATION ARCADE & KEEPSAKE</span>
+        </div>
+
+        <h2 id="stage-5-heading" class="stage-title">
+          The Birthday Fun Zone & Keepsake Gallery 🎊
+        </h2>
+
+        <p class="stage-subtitle">
+          Interactive celebration toys, confetti cannons, blessing balloons, and a digital Polaroid keepsake of Sir Sufyan!
+        </p>
+
+        <!-- Arcade Feature Grid -->
+        <div class="arcade-grid">
+          
+          <!-- Feature 1: Confetti Cannon Blaster -->
+          <div class="arcade-card blaster-box">
+            <div class="arcade-card-icon">🎉</div>
+            <h3>Confetti Cannon Blast</h3>
+            <p>Ready to launch celebration fireworks? Click the blast button for a 360-degree rainbow confetti eruption!</p>
+            <div class="cannon-actions">
+              <button id="cannon-burst-btn" class="arcade-btn blast-btn">
+                <span>💥 Launch Confetti Shower!</span>
+              </button>
+              <div class="blast-counter">
+                <span>Shots Fired: </span><strong id="blast-count">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 2: Release a Birthday Balloon Blessing -->
+          <div class="arcade-card balloon-wish-box">
+            <div class="arcade-card-icon">🎈</div>
+            <h3>Send a Sky Blessing</h3>
+            <p>Pick a golden wish or add your own blessing to float into the sky for Sir Sufyan:</p>
+            
+            <div class="wish-chips" id="wish-chip-group">
+              <button class="chip active" data-wish="Wishing you eternal health, peace, and smiles!">🌸 Eternal Health</button>
+              <button class="chip" data-wish="May your brilliance continue to inspire thousands!">🚀 Unstoppable Success</button>
+              <button class="chip" data-wish="May every dream you hold dear turn into reality!">⭐ Big Dreams Realized</button>
+              <button class="chip" data-wish="Best teacher, mentor, and hero in the world!">👑 World's Best Teacher</button>
+            </div>
+
+            <div class="custom-wish-input-row">
+              <input type="text" id="custom-wish-input" placeholder="Or type your custom blessing..." maxlength="80" aria-label="Custom blessing text" />
+              <button id="send-balloon-btn" class="arcade-btn send-btn">
+                <span>🎈 Release Balloon</span>
+              </button>
+            </div>
+
+            <!-- Floating sky animation container -->
+            <div class="sky-flight-arena" id="sky-arena" aria-hidden="true"></div>
+          </div>
+
+          <!-- Feature 3: Digital Polaroid Keepsake Frame -->
+          <div class="arcade-card polaroid-box" id="printable-polaroid">
+            <div class="arcade-card-icon">📸</div>
+            <h3>Sir Sufyan's Keepsake</h3>
+            <p>A collectible birthday snapshot souvenir from his proud students!</p>
+
+            <div class="polaroid-wrapper">
+              <div class="polaroid-pin">📌</div>
+              <div class="polaroid-inner">
+                <img src="sir-sufyan.jpeg" alt="Sir Sufyan Birthday Keepsake" class="polaroid-photo" onerror="this.onerror=null; this.src='sir-sufyan.jpg';" />
+                <div class="polaroid-caption">
+                  <p class="polaroid-note">"Sir Sufyan's Magical Birthday 2026"</p>
+                  <p class="polaroid-dedication">With Endless Love: Karishma, Maaz & Zaara 💖</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="polaroid-actions">
+              <button id="print-keepsake-btn" class="secondary-btn">
+                <span>🖨️ Print / Save Keepsake</span>
+              </button>
+              <button id="copy-link-btn" class="secondary-btn">
+                <span>🔗 Share Celebration</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Grand Journey Recap & Replay -->
+        <div class="journey-recap-box">
+          <div class="recap-badge">🎂 HAPPY BIRTHDAY SIR SUFYAN 🎂</div>
+          <p>
+            May this website bring a bright smile to your face just as you bring joy, confidence, and wisdom to all our lives every single day.
+          </p>
+          <div class="replay-actions">
+            <button id="replay-adventure-btn" class="primary-btn pulse-glow">
+              <span>🔄 Replay Birthday Adventure From Start</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
-  <div class="party-flash" id="party-flash" aria-hidden="true"></div>
+  <!-- Interactive Toast Notification -->
+  <div id="toast-notification" class="toast-popup" role="status" aria-live="polite">
+    <span id="toast-icon">✨</span>
+    <span id="toast-message">Happy Birthday, Sir Sufyan!</span>
+  </div>
 
+  <!-- Accessible Footer -->
+  <footer class="magical-footer" role="contentinfo">
+    <div class="footer-content">
+      <p class="footer-title">
+        🎉 Designed & Created with Pure Admiration for <strong>Sir Sufyan</strong> 🎉
+      </p>
+      <p class="footer-credits">
+        Crafted with love by <strong>Karishma</strong>, <strong>Maaz</strong>, and <strong>Zaara</strong>
+      </p>
+      <p class="footer-note">
+        Celebrating an extraordinary teacher, visionary guide, and phenomenal mentor.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script logic -->
   <script src="script.js"></script>
 </body>
 </html>
